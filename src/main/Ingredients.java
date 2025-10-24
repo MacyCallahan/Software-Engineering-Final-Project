@@ -46,6 +46,10 @@ import java.io.BufferedWriter;
 	    			ingredientsSet.addIngredient(userIngredient);
 	    		}
 	    		
+	    		System.out.println("What quantity do you have of this ingredient?");
+	    		String ingredientQuantity = userInput.nextLine();
+	    		
+	    		
 	    	}
 	    	
 	    	
@@ -70,10 +74,37 @@ import java.io.BufferedWriter;
 	    }
 	    
 
-	    public void addQuantity(){
+	    public void addQuantity(String quantity){
+	    	
+	    	Ingredients ingredientObject = new Ingredients();
+	    	String numerator;
+	    	String denominator;
+	    	String[] fraction;
+	    	
+	    	int n;
+	    	int d;
+	    	
+	    	double calculatableQuantity;
+	    	
+	    	if (quantity.contains("/")) {
+	    		fraction = quantity.split("/");
+	    		numerator = fraction[0];
+	    		denominator = fraction[1];
+	    		
+	    		n = Integer.parseInt(numerator);
+	    		d = Integer.parseInt(denominator);
+	    		
+	    		calculatableQuantity = n / d;
+	    		
+//	    		for (int i = 0; i <= quantity.length(); i++) {
+//	    			if (quantity[i] != "/") && () {
+//	    				
+//	    				numerator.
+//	    				
+//	    			}
+	    		}
+	    		
+	    	}
 
 	    }
-
-
-	}
 
