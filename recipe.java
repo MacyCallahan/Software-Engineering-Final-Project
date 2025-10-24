@@ -1,6 +1,6 @@
 import java.util.List;
 
-Public class Recipe {
+public class Recipe {
     private String title;
     private List<String> ingredients;
     private String instructions;
