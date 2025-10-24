@@ -1,4 +1,10 @@
-//Note: code pasted from my initial deleted experimentation file.
+
+/**
+ * @author Catherine Larson
+ * @version 1.1
+ * First version code pasted from my initial deleted experimentation file.
+ */
+
 package main;
 
 import java.util.HashSet;
@@ -13,11 +19,35 @@ import java.io.BufferedWriter;
 	 * Would like to make the ingredients list a dropdown functionality with searchability to eliminate duplicates with plurals.
 	 */
 
+/**
+ * @author Catherine Larson
+ */
 	public class Ingredients{
+		
+		public static Set<String> ingredientsSet;
+		
+		public void Ingredients() {
+			this.ingredientsSet = new HashSet<String>();
+		}
 
 	    public static void main(String[] args){
 	    	
-	    	Set<String> ingredients = new HashSet<String>();
+	    	Scanner userInput = new Scanner(System.in);
+	    	
+	    	System.out.println("What action would you like to take? Enter 1 for adding an ingredient or 2 for adding a quantity.");
+	    	int action = userInput.nextInt();
+	    	
+	    	if (action == 1) {
+	    		
+	    		System.out.println("What is the name of the ingredient you would like to add?");
+	    		String userIngredient = userInput.nextLine();
+	    		
+	    		if (!ingredientsSet.contains(userIngredient)) {
+	    			ingredientsSet.addIngredient(userIngredient);
+	    		}
+	    		
+	    	}
+	    	
 	    	
 //			INITIAL TEST	    	
 //	    	ingredients.add("rice");
@@ -30,7 +60,12 @@ import java.io.BufferedWriter;
 	    }
 
 
-	    public void addIngredient(){
+	    public void addIngredient(String ingredient){
+	    	
+	    	Ingredients ingObj = new Ingredients();
+	    	ingObj.ingredientsSet.add(ingredient);
+	    	
+	    	
 
 	    }
 	    
