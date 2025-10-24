@@ -1,7 +1,7 @@
 
 /**
  * @author Catherine Larson
- * @version 1.1
+ * @version 1.4
  * First version code pasted from my initial deleted experimentation file.
  */
 
@@ -9,6 +9,7 @@ package main;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.HashMap;
 import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
@@ -24,10 +25,10 @@ import java.io.BufferedWriter;
  */
 	public class Ingredients{
 		
-		public static Set<String> ingredientsSet;
+		public static HashMap<String, Double> ingredientsMap;
 		
 		public void Ingredients() {
-			this.ingredientsSet = new HashSet<String>();
+			this.ingredientsMap = new HashMap<String, Double>();
 		}
 
 	    public static void main(String[] args){
@@ -41,15 +42,12 @@ import java.io.BufferedWriter;
 	    		
 	    		System.out.println("What is the name of the ingredient you would like to add?");
 	    		String userIngredient = userInput.nextLine();
-	    		
-	    		if (!ingredientsSet.contains(userIngredient)) {
-	    			ingredientsSet.addIngredient(userIngredient);
-	    		}
-	    		
 	    		System.out.println("What quantity do you have of this ingredient?");
 	    		String ingredientQuantity = userInput.nextLine();
 	    		
-	    		
+	    		if (!ingredientsMap.containsKey(userIngredient)) {
+	    			ingredientsMap.addIngredientWithQuantity(userIngredient, ingredientQuantity);
+	    		}	
 	    	}
 	    	
 	    	
@@ -64,19 +62,9 @@ import java.io.BufferedWriter;
 	    }
 
 
-	    public void addIngredient(String ingredient){
+	    public void addIngredientWithQuantity(String ingredient, String quantity){
 	    	
 	    	Ingredients ingObj = new Ingredients();
-	    	ingObj.ingredientsSet.add(ingredient);
-	    	
-	    	
-
-	    }
-	    
-
-	    public void addQuantity(String quantity){
-	    	
-	    	Ingredients ingredientObject = new Ingredients();
 	    	String numerator;
 	    	String denominator;
 	    	String[] fraction;
@@ -94,17 +82,46 @@ import java.io.BufferedWriter;
 	    		n = Integer.parseInt(numerator);
 	    		d = Integer.parseInt(denominator);
 	    		
-	    		calculatableQuantity = n / d;
+	    		calculatableQuantity = n / d;	
 	    		
-//	    		for (int i = 0; i <= quantity.length(); i++) {
-//	    			if (quantity[i] != "/") && () {
-//	    				
-//	    				numerator.
-//	    				
-//	    			}
-	    		}
+	    		}	
+	    	
+	    	else {
 	    		
+	    		calculatableQuantity = Double.parseDouble(quantity);
 	    	}
+	    	ingObj.ingredientsMap.put(ingredient, calculatableQuantity);	
 
 	    }
+	    
 
+//	    public void addQuantity(String quantity){
+//	    	
+//	    	Ingredients ingredientObject = new Ingredients();
+//	    	String numerator;
+//	    	String denominator;
+//	    	String[] fraction;
+//	    	
+//	    	int n;
+//	    	int d;
+//	    	
+//	    	double calculatableQuantity;
+//	    	
+//	    	if (quantity.contains("/")) {
+//	    		fraction = quantity.split("/");
+//	    		numerator = fraction[0];
+//	    		denominator = fraction[1];
+//	    		
+//	    		n = Integer.parseInt(numerator);
+//	    		d = Integer.parseInt(denominator);
+//	    		
+//	    		calculatableQuantity = n / d;	
+//	    		
+//	    		}	
+//	    	
+//	    	else {
+//	    		
+//	    		calculatableQuantity = Double.parseDouble(quantity);
+//	    	}
+//	    	}
+	    }
